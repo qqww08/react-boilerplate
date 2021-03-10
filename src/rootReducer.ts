@@ -1,5 +1,8 @@
 import { combineReducers } from "redux";
+import getAction, { initialState as action } from "./store/reducer";
 
-export const initialState = {};
+export const initialState = {
+  getAction: action,
+};
 
-export default combineReducers({});
+export default combineReducers({ getAction });

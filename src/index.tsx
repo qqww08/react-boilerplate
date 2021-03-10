@@ -1,23 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import "regenerator-runtime/runtime";
+import "core-js/stable";
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
+import * as React from "react";
+import { render } from "react-dom";
 import App from "./App";
 import { Provider } from "react-redux";
 import themes from "./styles/themes";
 import { ThemeProvider } from "./styles/themed-components";
 import GlobalStyle from "./styles/global-styles";
 import configureStore from "./createStore";
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-import "react-app-polyfill/ie11";
-import "react-app-polyfill/stable";
-const store = configureStore();
 
-ReactDOM.render(
+const store = configureStore();
+const rootEl = document.getElementById("root");
+
+render(
   <Provider store={store}>
     <GlobalStyle />
     <ThemeProvider theme={themes}>
       <App />
     </ThemeProvider>
   </Provider>,
-  document.getElementById("root")
+  rootEl
 );
